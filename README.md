@@ -9,7 +9,7 @@
 
 angular2-expandable-list is an HTML `<angular2-expandable-list>` tag enhanced with styling and animation
 
-[![Imgur](http://i.imgur.com/TzkG9ji.png?1)]
+![Imgur](http://i.imgur.com/TzkG9ji.png?1)
 
 ## Table of contents
 
