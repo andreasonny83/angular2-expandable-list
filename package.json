@@ -1,12 +1,17 @@
 {
   "name": "angular2-expandable-list",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Expandable lists made easy for Angular2",
   "main": "index.js",
   "scripts": {
+    "build_prod": "npm run clean && npm run inline && npm run ngc && npm run build",
+    "clean": "rm -rf lib && mkdir lib",
     "commit": "git-cz",
     "demo": "webpack-dev-server --content-base demo",
-    "precommit": "npm run test"
+    "inline": "ng2-inline -o lib -f -b src src/**/*.ts",
+    "ngc": "ngc -p tsconfig-ngc.json",
+    "precommit": "npm run test",
+    "build": "tsc -p tsconfig-tsc.json"
   },
   "repository": {
     "type": "git",
@@ -37,6 +42,8 @@
   "devDependencies": {
     "@angular/common": "2.4.7",
     "@angular/compiler": "2.4.7",
+    "@angular/compiler-cli": "2.4.7",
+    "@angular/core": "2.4.7",
     "@angular/platform-browser": "2.4.7",
     "@angular/platform-browser-dynamic": "2.4.7",
     "@types/jasmine": "2.5.43",
@@ -44,6 +51,7 @@
     "@types/selenium-webdriver": "2.53.39",
     "@types/source-map": "0.5.0",
     "@types/webpack": "2.2.6",
+    "angular2-inline-template-style": "1.0.1",
     "angular2-template-loader": "0.6.2",
     "awesome-typescript-loader": "3.0.4",
     "commitizen": "2.9.6",

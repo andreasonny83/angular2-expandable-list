@@ -1,1 +1,1 @@
-export * from './src/expandable-list.module';
+export * from './lib/expandable-list.module';
