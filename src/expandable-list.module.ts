@@ -25,3 +25,10 @@ import {
   ],
 })
 export class ExpandableListModule { }
+
+export {
+  ExpandableListComponent,
+  ExpandableListItemComponent,
+  ExpandableListStyler,
+  ExpandableListDividerStyler,
+};
