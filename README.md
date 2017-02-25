@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/andreasonny83/angular2-expandable-list.svg?branch=master)](https://travis-ci.org/andreasonny83/angular2-expandable-list)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
@@ -5,11 +6,9 @@
 
 > Expandable lists made easy for Angular2
 
-**NOTE** This is still pretty much a work-in-progress project.
-
 angular2-expandable-list is an HTML `<angular2-expandable-list>` tag enhanced with styling and animation
 
-![Imgur](http://i.imgur.com/TzkG9ji.png?1)
+![screenshot](http://i.imgur.com/Qa402ev.gif)
 
 ## Table of contents
 

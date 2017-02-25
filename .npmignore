@@ -1,0 +1,14 @@
+# common
+node_modules
+demo
+*.log
+.DS_Store
+.tmp
+
+# Webpack
+webpack.config.js
+
+# source/config
+src
+*.yml
+.gitignore

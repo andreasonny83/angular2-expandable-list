@@ -1,0 +1,29 @@
+<div class="expandable-list-item-title"
+     [class.expanded]="isExpanded"
+     (click)="onClick()">
+
+  <div class="expandable-list-item-title__title">
+    <span class="expandable-list-item--title">
+      <ng-content select="[title]"></ng-content>
+    </span>
+
+    <span class="expandable-list-item--secondary">
+      <ng-content select="[secondary]"></ng-content>
+    </span>
+  </div>
+
+  <div class="expandable-list-item__dropdown">
+    <svg version="1.1" viewBox="0 -60 100 220" xmlns="http://www.w3.org/2000/svg">
+      <g class="expandable-list-item__dropdown-chevron">
+        <line class="expandable-list-item__dropdown-chevron-line1" x1="-10" x2="55" y1="50" y2="50"></line>
+        <line class="expandable-list-item__dropdown-chevron-line2" x1="110" x2="44" y1="50" y2="50"></line>
+        </g>
+    </svg>
+  </div>
+</div>
+
+<div class="expandable-list-item-content"
+     [class.expanded]="isExpanded"
+     [attr.aria-hidden]="!isExpanded">
+  <ng-content select="[item]"></ng-content>
+</div>

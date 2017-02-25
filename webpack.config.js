@@ -50,7 +50,7 @@ module.exports = {
       },
 
       {
-        test: /\.css?$/,
+        test: /\.css|html?$/,
         use: [
           {
             loader: 'raw-loader'

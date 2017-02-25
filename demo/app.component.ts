@@ -2,8 +2,21 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app',
+  styles: [`
+    :host {
+      background: rgb(184, 218, 215);
+      display: block;
+      height: 100%;
+      padding-top: 50px;
+      box-sizing: border-box;
+    }
+    .expandable-list {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  `],
   template: `
-    <expandable-list>
+    <expandable-list class="expandable-list">
       <expandable-list-item *ngFor="let item of items">
         <span title>{{ item.title }}</span>
         <a item *ngFor="let i of item.items"
@@ -19,7 +32,20 @@ import { Component } from '@angular/core';
 
       <expandable-list-item>
         <span title>Manual</span>
-        <span secondary>enabled</span>
+        <span secondary>first</span>
+        <a href="http://www.goo.gl">Something else</a>
+        <a item href="http://www.goo.gl">Google</a>
+        <a item href="http://www.goo.gl">Google</a>
+        <a item href="http://www.goo.gl">Google</a>
+
+        <expandable-list-divider item></expandable-list-divider>
+
+        <a item href="http://www.goo.gl">Google</a>
+      </expandable-list-item>
+
+      <expandable-list-item>
+        <span title>Manual</span>
+        <span secondary>second</span>
         <a href="http://www.goo.gl">Something else</a>
         <a item href="http://www.goo.gl">Google</a>
         <a item href="http://www.goo.gl">Google</a>
