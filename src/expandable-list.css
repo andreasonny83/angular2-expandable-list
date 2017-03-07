@@ -13,11 +13,8 @@
   background: #eeeeee;
 }
 
-.expandable-list .expandable-list-item + .expandable-list-item .expandable-list-item-title.expanded {
-  /*border-top: 1px solid #e0e0e0;*/
-}
-.expandable-list .expandable-list-item .expandable-list-item-content.expanded {
-  border-bottom: 1px solid #e0e0e0;
+.expandable-list .expandable-list-item + .expandable-list-item {
+  border-top: 1px solid #e0e0e0;
 }
 
 .expandable-list .expandable-list-item .expandable-list-item-title {
@@ -102,26 +99,27 @@
   display: none;
 }
 
-.expandable-list .expandable-list-item .expandable-list-item-content {
-  font-size: 16px;
-  padding: 0;
-  max-height: 0;
+.expandable-list .expandable-list-item .expandable-list-item-overflow {
   overflow: hidden;
+}
+
+.expandable-list .expandable-list-item .expandable-list-item-content {
+  margin-top: -9999em;
+  padding: 16px 0;
+  overflow: auto;
+  font-size: 16px;
   opacity: 0;
   pointer-events: none;
-  transition: max-height .2s cubic-bezier(0, 0, 0.2, 1),
-              padding .2s cubic-bezier(0, 0, 0.2, 1),
-              opacity .2s cubic-bezier(0, 0, 0.2, 1);
+  transition: opacity 0.15s ease-out,
+              margin-top 0.3s ease-out;
 }
 
 .expandable-list .expandable-list-item .expandable-list-item-content.expanded {
-  padding: 16px 0;
-  max-height: 500px;
+  overflow: auto;
   opacity: 1;
   pointer-events: auto;
-  transition: max-height .3s cubic-bezier(0.4, 0, 0.2, 1),
-              padding .3s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.3s ease-in,
+              margin-top 0.2s ease-in;
 }
 
 .expandable-list .expandable-list-item .expandable-list-item-content > [item] {

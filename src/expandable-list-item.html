@@ -22,8 +22,12 @@
   </div>
 </div>
 
-<div class="expandable-list-item-content"
-     [class.expanded]="isExpanded"
-     [attr.aria-hidden]="!isExpanded">
-  <ng-content select="[item]"></ng-content>
+<div class="expandable-list-item-overflow">
+  <div class="expandable-list-item-content"
+       [class.expanded]="isExpanded"
+       [ngStyle]="{'margin-top': marginTop }"
+       [attr.aria-hidden]="!isExpanded"
+       #contentEl>
+    <ng-content select="[item]"></ng-content>
+  </div>
 </div>

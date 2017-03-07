@@ -2,96 +2,16 @@ import {
   Component,
   Directive,
   ViewEncapsulation,
-  AfterContentInit,
-  HostListener,
   HostBinding,
   Input,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
   selector: 'expandable-list',
-  styles: [`
-    .expandable-list {
-      display: block;
-      box-shadow: 0 2px 2px rgba(0,0,0,.24),
-                  0 0   2px rgba(0,0,0,.12);
-    }
-    .expandable-list .expandable-list-item {
-      display: block;
-      text-transform: capitalize;
-      color: #000;
-      background: #FFF;
-    }
-    .expandable-list [disabled].expandable-list-item {
-      background: #eeeeee;
-    }
-    .expandable-list [disabled].expandable-list-item .expandable-list-item-title {
-      cursor: default;
-    }
-    .expandable-list .expandable-list-item + .expandable-list-item {
-      border-top: 1px solid #e0e0e0;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-title {
-      display: flex;
-      flex-flow: row wrap;
-      align-items: center;
-      box-sizing: border-box;
-      padding: 0 16px;
-      height: 48px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary,
-    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown {
-      color: #757575;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-title > span {
-      flex: 1;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown {
-      text-align: end;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown-chevon {
-      transform: rotateZ(90deg);
-      transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown-chevon.expanded {
-      transform: rotateZ(-90deg);
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-content[hidden] {
-      display: none;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-content {
-      font-size: 16px;
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height .3s cubic-bezier(0.22, 0.61, 0.36, 1),
-                  padding .5s cubic-bezier(0.22, 0.61, 0.36, 1),
-                  opacity .2s cubic-bezier(0.22, 0.61, 0.36, 1);
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-content.expanded {
-      padding: 16px 0;
-      max-height: 500px;
-      opacity: 1;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-content > [item] {
-      display: block;
-      padding: 0 16px;
-      line-height: 40px;
-      text-decoration: none;
-      color: #000;
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-content > [item]:hover {
-      background: rgba(0,0,0,0.1);
-    }
-    .expandable-list .expandable-list-item .expandable-list-item-content .expandable-list-divider {
-      display: block;
-      margin: 12px 16px;
-      border-top: 1px solid #e0e0e0;
-    }
-  `],
+  styles: ['.expandable-list {  display: block;}.expandable-list .expandable-list-item {  display: block;  text-transform: capitalize;  color: #000;  background: #FFF;}.expandable-list [disabled].expandable-list-item {  background: #eeeeee;}.expandable-list .expandable-list-item + .expandable-list-item {  border-top: 1px solid #e0e0e0;}.expandable-list .expandable-list-item .expandable-list-item-title {  display: flex;  flex-flow: row wrap;  align-items: center;  box-sizing: border-box;  padding: 0 16px;  height: 52px;  font-size: 16px;  cursor: pointer;}.expandable-list [disabled].expandable-list-item .expandable-list-item-title {  cursor: default;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--title,.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary {  flex: 1;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary {  margin-top: 3px;  max-height: 18px;  transition: max-height .2s cubic-bezier(0, 0, 0.2, 1),              opacity .2s cubic-bezier(0, 0, 0.2, 1);}.expandable-list .expandable-list-item .expandable-list-item-title.expanded .expandable-list-item--secondary {  opacity: 0;  max-height: 0;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--title {  color: #000;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary,.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown {  color: #757575;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-title__title {  flex: auto;  display: flex;  flex-direction: column;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown {  flex: 1;  text-align: end;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown svg {  width: 18px;  vertical-align: middle;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line1,.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line2 {  stroke: #444;  stroke-width: 12px;  transform-origin: 50px 50px;  transition: transform 300ms cubic-bezier(0.65, 0.05, 0.36, 1);}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line1 {  transform: rotateZ(45deg);}.expandable-list .expandable-list-item .expandable-list-item-title.expanded .expandable-list-item__dropdown-chevron-line1 {  transform: rotateZ(-45deg);}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line2 {  transform: rotateZ(-45deg);}.expandable-list .expandable-list-item .expandable-list-item-title.expanded .expandable-list-item__dropdown-chevron-line2 {  transform: rotateZ(45deg);}.expandable-list .expandable-list-item .expandable-list-item-content[hidden] {  display: none;}.expandable-list .expandable-list-item .expandable-list-item-overflow {  overflow: hidden;}.expandable-list .expandable-list-item .expandable-list-item-content {  margin-top: -9999em;  padding: 16px 0;  overflow: auto;  font-size: 16px;  opacity: 0;  pointer-events: none;  transition: opacity 0.15s ease-out,              margin-top 0.3s ease-out;}.expandable-list .expandable-list-item .expandable-list-item-content.expanded {  overflow: auto;  opacity: 1;  pointer-events: auto;  transition: opacity 0.3s ease-in,              margin-top 0.2s ease-in;}.expandable-list .expandable-list-item .expandable-list-item-content > [item] {  display: block;  padding: 0 16px;  line-height: 40px;  text-decoration: none;  color: #000;}.expandable-list .expandable-list-item .expandable-list-item-content > [item]:hover {  background: rgba(0,0,0,0.1);}.expandable-list .expandable-list-item .expandable-list-item-content .expandable-list-divider {  display: block;  margin: 12px 16px;  border-top: 1px solid #e0e0e0;}'],
   template: `<ng-content></ng-content>`,
   encapsulation: ViewEncapsulation.None,
 })
@@ -121,58 +41,47 @@ export class ExpandableListDividerStyler { }
   host: {
     '[class.expandable-list-item]': 'true',
   },
-  template: `
-    <div class="expandable-list-item-title"
-         [class.expanded]="isExpanded"
-         (click)="onClick()">
-      <span>
-        <ng-content select="[title]"></ng-content>
-      </span>
-
-      <span class="expandable-list-item--secondary">
-        <ng-content select="[secondary]"></ng-content>
-      </span>
-
-      <span class="expandable-list-item-dropdown">
-        <svg x="0px" y="0px" class="expandable-list-item-dropdown-chevon" [class.expanded]="isExpanded"
-             viewBox="0 0 306 306" width="12px" height="12px">
-          <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153" fill="#757575"/>
-        </svg>
-      </span>
-    </div>
-
-    <div class="expandable-list-item-content"
-         [class.expanded]="isExpanded"
-         [hidden]="disabled">
-      <ng-content select="[item]"></ng-content>
-    </div>
-  `,
+  template: '<div class="expandable-list-item-title" [class.expanded]="isExpanded" (click)="onClick()"><div class="expandable-list-item-title__title"><span class="expandable-list-item--title"><ng-content select="[title]"></ng-content></span><span class="expandable-list-item--secondary"><ng-content select="[secondary]"></ng-content></span></div><div class="expandable-list-item__dropdown"><svg version="1.1" viewBox="0 -60 100 220" xmlns="http://www.w3.org/2000/svg"><g class="expandable-list-item__dropdown-chevron"><line class="expandable-list-item__dropdown-chevron-line1" x1="-10" x2="55" y1="50" y2="50"></line><line class="expandable-list-item__dropdown-chevron-line2" x1="110" x2="44" y1="50" y2="50"></line></g></svg></div></div><div class="expandable-list-item-overflow"><div class="expandable-list-item-content" [class.expanded]="isExpanded" [ngStyle]="{\'margin-top\': marginTop }" [attr.aria-hidden]="!isExpanded" #contentEl><ng-content select="[item]"></ng-content></div></div>',
   encapsulation: ViewEncapsulation.None
 })
-export class ExpandableListItemComponent implements AfterContentInit {
-  isExpanded: boolean;
+export class ExpandableListItemComponent implements AfterViewInit {
+  public isExpanded: boolean;
+  public marginTop: string;
 
   @Input('disabled')
-    get disabled() { return this.isDisabled; }
-    set disabled(value: boolean) {
-      this.isDisabled = (value !== null && `${value}` !== 'false') ? true : null;
-    }
+  get disabled() { return this.isDisabled; }
+  set disabled(value: boolean) {
+    this.isDisabled = (value !== null && `${value}` !== 'false') ? true : null;
+  }
 
-  @HostBinding('attr.disabled') isDisabled: boolean;
+  private elHeight: number;
+
+  @ViewChild('contentEl')
+  private elementView: ElementRef;
+
+  @HostBinding('attr.disabled')
+  private isDisabled: boolean;
 
   constructor() {
     this.isExpanded = false;
   }
 
-  ngAfterContentInit() {
-    // console.log('ExpandableListItemComponent initialized');
+  public ngAfterViewInit() {
+    this.elHeight = this.elementView.nativeElement.offsetHeight;
+    this.marginTop = `-${this.elHeight}px`;
   }
 
-  onClick() {
+  public onClick() {
     if (this.disabled) {
       return;
     }
 
     this.isExpanded = !this.isExpanded;
+
+    if (!this.isExpanded) {
+      this.marginTop = `-${this.elHeight}px`;
+    } else {
+      this.marginTop = '0';
+    }
   }
 }

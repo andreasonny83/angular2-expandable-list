@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import {
   ExpandableListComponent,
   ExpandableListItemComponent,
@@ -9,7 +9,7 @@ import {
 
 @NgModule({
   imports: [
-    BrowserModule,
+    CommonModule,
   ],
   declarations: [
     ExpandableListComponent,

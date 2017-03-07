@@ -14,6 +14,11 @@ import * as import5 from '@angular/core/src/metadata/view';
 import * as import6 from '@angular/core/src/linker/view_type';
 import * as import7 from '@angular/core/src/change_detection/constants';
 import * as import8 from '@angular/core/src/linker/component_factory';
+import * as import9 from '@angular/core/src/linker/query_list';
+import * as import10 from '../node_modules/@angular/common/src/directives/ng_style.ngfactory';
+import * as import11 from '@angular/core/src/change_detection/differs/keyvalue_differs';
+import * as import12 from '@angular/core/src/linker/element_ref';
+import * as import13 from '@angular/common/src/directives/ng_style';
 export class Wrapper_ExpandableListComponent {
   /*private*/ _eventHandler:Function;
   context:import0.ExpandableListComponent;
@@ -194,7 +199,7 @@ class View_ExpandableListComponent_Host0 extends import1.AppView<any> {
   }
 }
 export const ExpandableListComponentNgFactory:import8.ComponentFactory<import0.ExpandableListComponent> = new import8.ComponentFactory<import0.ExpandableListComponent>('expandable-list',View_ExpandableListComponent_Host0,import0.ExpandableListComponent);
-const styles_ExpandableListComponent:any[] = ['\n    .expandable-list {\n      display: block;\n      box-shadow: 0 2px 2px rgba(0,0,0,.24),\n                  0 0   2px rgba(0,0,0,.12);\n    }\n    .expandable-list .expandable-list-item {\n      display: block;\n      text-transform: capitalize;\n      color: #000;\n      background: #FFF;\n    }\n    .expandable-list [disabled].expandable-list-item {\n      background: #eeeeee;\n    }\n    .expandable-list [disabled].expandable-list-item .expandable-list-item-title {\n      cursor: default;\n    }\n    .expandable-list .expandable-list-item + .expandable-list-item {\n      border-top: 1px solid #e0e0e0;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-title {\n      display: flex;\n      flex-flow: row wrap;\n      align-items: center;\n      box-sizing: border-box;\n      padding: 0 16px;\n      height: 48px;\n      font-size: 16px;\n      cursor: pointer;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary,\n    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown {\n      color: #757575;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-title > span {\n      flex: 1;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown {\n      text-align: end;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown-chevon {\n      transform: rotateZ(90deg);\n      transition: transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1);\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-dropdown-chevon.expanded {\n      transform: rotateZ(-90deg);\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-content[hidden] {\n      display: none;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-content {\n      font-size: 16px;\n      padding: 0;\n      max-height: 0;\n      overflow: hidden;\n      opacity: 0;\n      transition: max-height .3s cubic-bezier(0.22, 0.61, 0.36, 1),\n                  padding .5s cubic-bezier(0.22, 0.61, 0.36, 1),\n                  opacity .2s cubic-bezier(0.22, 0.61, 0.36, 1);\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-content.expanded {\n      padding: 16px 0;\n      max-height: 500px;\n      opacity: 1;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-content > [item] {\n      display: block;\n      padding: 0 16px;\n      line-height: 40px;\n      text-decoration: none;\n      color: #000;\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-content > [item]:hover {\n      background: rgba(0,0,0,0.1);\n    }\n    .expandable-list .expandable-list-item .expandable-list-item-content .expandable-list-divider {\n      display: block;\n      margin: 12px 16px;\n      border-top: 1px solid #e0e0e0;\n    }\n  '];
+const styles_ExpandableListComponent:any[] = ['.expandable-list {  display: block;}.expandable-list .expandable-list-item {  display: block;  text-transform: capitalize;  color: #000;  background: #FFF;}.expandable-list [disabled].expandable-list-item {  background: #eeeeee;}.expandable-list .expandable-list-item + .expandable-list-item {  border-top: 1px solid #e0e0e0;}.expandable-list .expandable-list-item .expandable-list-item-title {  display: flex;  flex-flow: row wrap;  align-items: center;  box-sizing: border-box;  padding: 0 16px;  height: 52px;  font-size: 16px;  cursor: pointer;}.expandable-list [disabled].expandable-list-item .expandable-list-item-title {  cursor: default;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--title,.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary {  flex: 1;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary {  margin-top: 3px;  max-height: 18px;  transition: max-height .2s cubic-bezier(0, 0, 0.2, 1),              opacity .2s cubic-bezier(0, 0, 0.2, 1);}.expandable-list .expandable-list-item .expandable-list-item-title.expanded .expandable-list-item--secondary {  opacity: 0;  max-height: 0;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--title {  color: #000;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--secondary,.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown {  color: #757575;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item-title__title {  flex: auto;  display: flex;  flex-direction: column;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown {  flex: 1;  text-align: end;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown svg {  width: 18px;  vertical-align: middle;}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line1,.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line2 {  stroke: #444;  stroke-width: 12px;  transform-origin: 50px 50px;  transition: transform 300ms cubic-bezier(0.65, 0.05, 0.36, 1);}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line1 {  transform: rotateZ(45deg);}.expandable-list .expandable-list-item .expandable-list-item-title.expanded .expandable-list-item__dropdown-chevron-line1 {  transform: rotateZ(-45deg);}.expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item__dropdown-chevron-line2 {  transform: rotateZ(-45deg);}.expandable-list .expandable-list-item .expandable-list-item-title.expanded .expandable-list-item__dropdown-chevron-line2 {  transform: rotateZ(45deg);}.expandable-list .expandable-list-item .expandable-list-item-content[hidden] {  display: none;}.expandable-list .expandable-list-item .expandable-list-item-overflow {  overflow: hidden;}.expandable-list .expandable-list-item .expandable-list-item-content {  margin-top: -9999em;  padding: 16px 0;  overflow: auto;  font-size: 16px;  opacity: 0;  pointer-events: none;  transition: opacity 0.15s ease-out,              margin-top 0.3s ease-out;}.expandable-list .expandable-list-item .expandable-list-item-content.expanded {  overflow: auto;  opacity: 1;  pointer-events: auto;  transition: opacity 0.3s ease-in,              margin-top 0.2s ease-in;}.expandable-list .expandable-list-item .expandable-list-item-content > [item] {  display: block;  padding: 0 16px;  line-height: 40px;  text-decoration: none;  color: #000;}.expandable-list .expandable-list-item .expandable-list-item-content > [item]:hover {  background: rgba(0,0,0,0.1);}.expandable-list .expandable-list-item .expandable-list-item-content .expandable-list-divider {  display: block;  margin: 12px 16px;  border-top: 1px solid #e0e0e0;}'];
 var renderType_ExpandableListComponent:import4.RenderComponentType = import3.createRenderComponentType('',1,import5.ViewEncapsulation.None,styles_ExpandableListComponent,{});
 export class View_ExpandableListComponent0 extends import1.AppView<import0.ExpandableListComponent> {
   constructor(viewUtils:import3.ViewUtils,parentView:import1.AppView<any>,parentIndex:number,parentElement:any) {
@@ -229,9 +234,9 @@ class View_ExpandableListItemComponent_Host0 extends import1.AppView<any> {
   }
   detectChangesInternal(throwOnChange:boolean):void {
     this._ExpandableListItemComponent_0_3.ngDoCheck(this,this._el_0,throwOnChange);
-    if (!throwOnChange) { if ((this.numberOfChecks === 0)) { this._ExpandableListItemComponent_0_3.context.ngAfterContentInit(); } }
     this._ExpandableListItemComponent_0_3.checkHost(this,this.compView_0,this._el_0,throwOnChange);
     this.compView_0.internalDetectChanges(throwOnChange);
+    if (!throwOnChange) { if ((this.numberOfChecks === 0)) { this._ExpandableListItemComponent_0_3.context.ngAfterViewInit(); } }
   }
   destroyInternal():void {
     this.compView_0.destroy();
@@ -249,123 +254,94 @@ export const ExpandableListItemComponentNgFactory:import8.ComponentFactory<impor
 const styles_ExpandableListItemComponent:any[] = ([] as any[]);
 var renderType_ExpandableListItemComponent:import4.RenderComponentType = import3.createRenderComponentType('',3,import5.ViewEncapsulation.None,styles_ExpandableListItemComponent,{});
 export class View_ExpandableListItemComponent0 extends import1.AppView<import0.ExpandableListItemComponent> {
-  _text_0:any;
+  _viewQuery_contentEl_0:import9.QueryList<any>;
+  _el_0:any;
   _el_1:any;
-  _text_2:any;
+  _el_2:any;
   _el_3:any;
-  _text_4:any;
-  _text_5:any;
-  _text_6:any;
+  _el_4:any;
+  _el_5:any;
+  _el_6:any;
   _el_7:any;
-  _text_8:any;
-  _text_9:any;
-  _text_10:any;
-  _el_11:any;
-  _text_12:any;
-  _el_13:any;
-  _text_14:any;
-  _el_15:any;
-  _text_16:any;
-  _text_17:any;
-  _text_18:any;
-  _text_19:any;
-  _el_20:any;
-  _text_21:any;
-  _text_22:any;
-  _text_23:any;
-  /*private*/ _expr_24:any;
-  /*private*/ _expr_25:any;
-  /*private*/ _expr_26:any;
-  /*private*/ _expr_27:any;
+  _el_8:any;
+  _el_9:any;
+  _el_10:any;
+  _NgStyle_10_3:import10.Wrapper_NgStyle;
+  /*private*/ _expr_13:any;
+  /*private*/ _expr_14:any;
+  /*private*/ _expr_15:any;
+  _map_16:any;
   constructor(viewUtils:import3.ViewUtils,parentView:import1.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_ExpandableListItemComponent0,renderType_ExpandableListItemComponent,import6.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import7.ChangeDetectorStatus.CheckAlways);
-    this._expr_24 = import2.UNINITIALIZED;
-    this._expr_25 = import2.UNINITIALIZED;
-    this._expr_26 = import2.UNINITIALIZED;
-    this._expr_27 = import2.UNINITIALIZED;
+    this._expr_13 = import2.UNINITIALIZED;
+    this._expr_14 = import2.UNINITIALIZED;
+    this._expr_15 = import2.UNINITIALIZED;
+    this._map_16 = import3.pureProxy1((p0:any):{[key: string]:any} => {
+      return {'margin-top': p0};
+    });
   }
   createInternal(rootSelector:string):import8.ComponentRef<any> {
     const parentRenderNode:any = this.renderer.createViewRoot(this.parentElement);
-    this._text_0 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
-    this._el_1 = import3.createRenderElement(this.renderer,parentRenderNode,'div',new import3.InlineArray2(2,'class','expandable-list-item-title'),(null as any));
-    this._text_2 = this.renderer.createText(this._el_1,'\n      ',(null as any));
-    this._el_3 = import3.createRenderElement(this.renderer,this._el_1,'span',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_4 = this.renderer.createText(this._el_3,'\n        ',(null as any));
-    this.projectNodes(this._el_3,0);
-    this._text_5 = this.renderer.createText(this._el_3,'\n      ',(null as any));
-    this._text_6 = this.renderer.createText(this._el_1,'\n\n      ',(null as any));
-    this._el_7 = import3.createRenderElement(this.renderer,this._el_1,'span',new import3.InlineArray2(2,'class','expandable-list-item--secondary'),(null as any));
-    this._text_8 = this.renderer.createText(this._el_7,'\n        ',(null as any));
-    this.projectNodes(this._el_7,1);
-    this._text_9 = this.renderer.createText(this._el_7,'\n      ',(null as any));
-    this._text_10 = this.renderer.createText(this._el_1,'\n\n      ',(null as any));
-    this._el_11 = import3.createRenderElement(this.renderer,this._el_1,'span',new import3.InlineArray2(2,'class','expandable-list-item-dropdown'),(null as any));
-    this._text_12 = this.renderer.createText(this._el_11,'\n        ',(null as any));
-    this._el_13 = import3.createRenderElement(this.renderer,this._el_11,':svg:svg',new import3.InlineArray16(12,'class','expandable-list-item-dropdown-chevon','height','12px','viewBox','0 0 306 306','width','12px','x','0px','y','0px'),(null as any));
-    this._text_14 = this.renderer.createText(this._el_13,'\n          ',(null as any));
-    this._el_15 = import3.createRenderElement(this.renderer,this._el_13,':svg:polygon',new import3.InlineArray4(4,'fill','#757575','points','94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153'),(null as any));
-    this._text_16 = this.renderer.createText(this._el_13,'\n        ',(null as any));
-    this._text_17 = this.renderer.createText(this._el_11,'\n      ',(null as any));
-    this._text_18 = this.renderer.createText(this._el_1,'\n    ',(null as any));
-    this._text_19 = this.renderer.createText(parentRenderNode,'\n\n    ',(null as any));
-    this._el_20 = import3.createRenderElement(this.renderer,parentRenderNode,'div',new import3.InlineArray2(2,'class','expandable-list-item-content'),(null as any));
-    this._text_21 = this.renderer.createText(this._el_20,'\n      ',(null as any));
-    this.projectNodes(this._el_20,2);
-    this._text_22 = this.renderer.createText(this._el_20,'\n    ',(null as any));
-    this._text_23 = this.renderer.createText(parentRenderNode,'\n  ',(null as any));
-    var disposable_0:Function = import3.subscribeToRenderElement(this,this._el_1,new import3.InlineArray2(2,'click',(null as any)),this.eventHandler(this.handleEvent_1));
+    this._viewQuery_contentEl_0 = new import9.QueryList<any>();
+    this._el_0 = import3.createRenderElement(this.renderer,parentRenderNode,'div',new import3.InlineArray2(2,'class','expandable-list-item-title'),(null as any));
+    this._el_1 = import3.createRenderElement(this.renderer,this._el_0,'div',new import3.InlineArray2(2,'class','expandable-list-item-title__title'),(null as any));
+    this._el_2 = import3.createRenderElement(this.renderer,this._el_1,'span',new import3.InlineArray2(2,'class','expandable-list-item--title'),(null as any));
+    this.projectNodes(this._el_2,0);
+    this._el_3 = import3.createRenderElement(this.renderer,this._el_1,'span',new import3.InlineArray2(2,'class','expandable-list-item--secondary'),(null as any));
+    this.projectNodes(this._el_3,1);
+    this._el_4 = import3.createRenderElement(this.renderer,this._el_0,'div',new import3.InlineArray2(2,'class','expandable-list-item__dropdown'),(null as any));
+    this._el_5 = import3.createRenderElement(this.renderer,this._el_4,':svg:svg',new import3.InlineArray8(6,'version','1.1','viewBox','0 -60 100 220','xmlns','http://www.w3.org/2000/svg'),(null as any));
+    this._el_6 = import3.createRenderElement(this.renderer,this._el_5,':svg:g',new import3.InlineArray2(2,'class','expandable-list-item__dropdown-chevron'),(null as any));
+    this._el_7 = import3.createRenderElement(this.renderer,this._el_6,':svg:line',new import3.InlineArray16(10,'class','expandable-list-item__dropdown-chevron-line1','x1','-10','x2','55','y1','50','y2','50'),(null as any));
+    this._el_8 = import3.createRenderElement(this.renderer,this._el_6,':svg:line',new import3.InlineArray16(10,'class','expandable-list-item__dropdown-chevron-line2','x1','110','x2','44','y1','50','y2','50'),(null as any));
+    this._el_9 = import3.createRenderElement(this.renderer,parentRenderNode,'div',new import3.InlineArray2(2,'class','expandable-list-item-overflow'),(null as any));
+    this._el_10 = import3.createRenderElement(this.renderer,this._el_9,'div',new import3.InlineArray2(2,'class','expandable-list-item-content'),(null as any));
+    this._NgStyle_10_3 = new import10.Wrapper_NgStyle(this.parentView.injectorGet(import11.KeyValueDiffers,this.parentIndex),new import12.ElementRef(this._el_10),this.renderer);
+    this.projectNodes(this._el_10,2);
+    var disposable_0:Function = import3.subscribeToRenderElement(this,this._el_0,new import3.InlineArray2(2,'click',(null as any)),this.eventHandler(this.handleEvent_0));
+    this._viewQuery_contentEl_0.reset([new import12.ElementRef(this._el_10)]);
+    this.context.elementView = this._viewQuery_contentEl_0.first;
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
-      this._text_0,
+      this._el_0,
       this._el_1,
-      this._text_2,
+      this._el_2,
       this._el_3,
-      this._text_4,
-      this._text_5,
-      this._text_6,
+      this._el_4,
+      this._el_5,
+      this._el_6,
       this._el_7,
-      this._text_8,
-      this._text_9,
-      this._text_10,
-      this._el_11,
-      this._text_12,
-      this._el_13,
-      this._text_14,
-      this._el_15,
-      this._text_16,
-      this._text_17,
-      this._text_18,
-      this._text_19,
-      this._el_20,
-      this._text_21,
-      this._text_22,
-      this._text_23
+      this._el_8,
+      this._el_9,
+      this._el_10
     ]
     ),[disposable_0]);
     return (null as any);
   }
+  injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
+    if (((token === import13.NgStyle) && (10 === requestNodeIndex))) { return this._NgStyle_10_3.context; }
+    return notFoundResult;
+  }
   detectChangesInternal(throwOnChange:boolean):void {
-    const currVal_24:any = this.context.isExpanded;
-    if (import3.checkBinding(throwOnChange,this._expr_24,currVal_24)) {
-      this.renderer.setElementClass(this._el_1,'expanded',currVal_24);
-      this._expr_24 = currVal_24;
+    const currVal_10_0_0:any = this._map_16(this.context.marginTop);
+    this._NgStyle_10_3.check_ngStyle(currVal_10_0_0,throwOnChange,false);
+    this._NgStyle_10_3.ngDoCheck(this,this._el_10,throwOnChange);
+    const currVal_13:any = this.context.isExpanded;
+    if (import3.checkBinding(throwOnChange,this._expr_13,currVal_13)) {
+      this.renderer.setElementClass(this._el_0,'expanded',currVal_13);
+      this._expr_13 = currVal_13;
     }
-    const currVal_25:any = this.context.isExpanded;
-    if (import3.checkBinding(throwOnChange,this._expr_25,currVal_25)) {
-      this.renderer.setElementClass(this._el_13,'expanded',currVal_25);
-      this._expr_25 = currVal_25;
+    const currVal_14:any = this.context.isExpanded;
+    if (import3.checkBinding(throwOnChange,this._expr_14,currVal_14)) {
+      this.renderer.setElementClass(this._el_10,'expanded',currVal_14);
+      this._expr_14 = currVal_14;
     }
-    const currVal_26:any = this.context.isExpanded;
-    if (import3.checkBinding(throwOnChange,this._expr_26,currVal_26)) {
-      this.renderer.setElementClass(this._el_20,'expanded',currVal_26);
-      this._expr_26 = currVal_26;
-    }
-    const currVal_27:any = this.context.disabled;
-    if (import3.checkBinding(throwOnChange,this._expr_27,currVal_27)) {
-      this.renderer.setElementProperty(this._el_20,'hidden',currVal_27);
-      this._expr_27 = currVal_27;
+    const currVal_15:boolean = !this.context.isExpanded;
+    if (import3.checkBinding(throwOnChange,this._expr_15,currVal_15)) {
+      this.renderer.setElementAttribute(this._el_10,'aria-hidden',((currVal_15 == null)? (null as any): currVal_15.toString()));
+      this._expr_15 = currVal_15;
     }
   }
-  handleEvent_1(eventName:string,$event:any):boolean {
+  handleEvent_0(eventName:string,$event:any):boolean {
     this.markPathToRootAsCheckOnce();
     var result:boolean = true;
     if ((eventName == 'click')) {

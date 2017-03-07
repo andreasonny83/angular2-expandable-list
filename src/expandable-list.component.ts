@@ -2,9 +2,11 @@ import {
   Component,
   Directive,
   ViewEncapsulation,
-  HostListener,
   HostBinding,
   Input,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -42,26 +44,44 @@ export class ExpandableListDividerStyler { }
   templateUrl: './expandable-list-item.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ExpandableListItemComponent {
+export class ExpandableListItemComponent implements AfterViewInit {
   public isExpanded: boolean;
+  public marginTop: string;
 
   @Input('disabled')
-    get disabled() { return this.isDisabled; }
-    set disabled(value: boolean) {
-      this.isDisabled = (value !== null && `${value}` !== 'false') ? true : null;
-    }
+  get disabled() { return this.isDisabled; }
+  set disabled(value: boolean) {
+    this.isDisabled = (value !== null && `${value}` !== 'false') ? true : null;
+  }
 
-  @HostBinding('attr.disabled') isDisabled: boolean;
+  private elHeight: number;
+
+  @ViewChild('contentEl')
+  private elementView: ElementRef;
+
+  @HostBinding('attr.disabled')
+  private isDisabled: boolean;
 
   constructor() {
     this.isExpanded = false;
   }
 
-  onClick() {
+  public ngAfterViewInit() {
+    this.elHeight = this.elementView.nativeElement.offsetHeight;
+    this.marginTop = `-${this.elHeight}px`;
+  }
+
+  public onClick() {
     if (this.disabled) {
       return;
     }
 
     this.isExpanded = !this.isExpanded;
+
+    if (!this.isExpanded) {
+      this.marginTop = `-${this.elHeight}px`;
+    } else {
+      this.marginTop = '0';
+    }
   }
 }

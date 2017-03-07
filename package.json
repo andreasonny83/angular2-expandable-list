@@ -4,13 +4,12 @@
   "description": "Expandable lists made easy for Angular2",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig-tsc.json",
-    "build_prod": "npm run clean && npm run inline && npm run ngc && npm run build",
-    "clean": "rm -rf lib && mkdir lib",
+    "build": "webpack --config config/webpack.lib.js",
+    "build_prod": "npm run inline && npm run ngc && npm run build",
     "commit": "git-cz",
-    "demo": "webpack-dev-server --content-base demo",
+    "demo": "webpack-dev-server --inline --progress --open --port 9007 --config config/webpack.demo.js --content-base demo",
     "inline": "ng2-inline -o lib -f -b src src/**/*.ts",
-    "ngc": "ngc -p tsconfig-ngc.json",
+    "ngc": "ngc -p tsconfig.json",
     "precommit": "npm run test",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -19,6 +18,8 @@
     "url": "https://github.com/andreasonny83/angular2-expandable-list.git"
   },
   "keywords": [
+    "angular",
+    "ng2",
     "angular2",
     "angular2-component",
     "lists",
@@ -31,38 +32,37 @@
   },
   "homepage": "https://github.com/andreasonny83/angular2-expandable-list#readme",
   "peerDependencies": {
-    "@angular/core": "^2.0.0"
-  },
-  "dependencies": {
-    "@angular/core": "2.4.7",
-    "es6-shim": "0.35.3",
-    "reflect-metadata": "0.1.9",
-    "rxjs": "5.1.1",
-    "zone.js": "0.7.7"
+    "@angular/common": "^2.0.0",
+    "@angular/core": "^2.0.0",
+    "@angular/platform-browser": "^2.0.0"
   },
   "devDependencies": {
-    "@angular/common": "2.4.7",
-    "@angular/compiler": "2.4.7",
-    "@angular/compiler-cli": "2.4.7",
-    "@angular/core": "2.4.7",
-    "@angular/platform-browser": "2.4.7",
-    "@angular/platform-browser-dynamic": "2.4.7",
+    "@angular/common": "2.4.9",
+    "@angular/compiler": "2.4.9",
+    "@angular/compiler-cli": "2.4.9",
+    "@angular/core": "2.4.9",
+    "@angular/platform-browser": "2.4.9",
+    "@angular/platform-browser-dynamic": "2.4.9",
     "@types/jasmine": "2.5.43",
     "@types/node": "7.0.5",
-    "@types/selenium-webdriver": "2.53.39",
+    "@types/selenium-webdriver": "2.53.40",
     "@types/source-map": "0.5.0",
-    "@types/webpack": "2.2.6",
-    "angular2-inline-template-style": "1.0.1",
+    "@types/webpack": "2.2.8",
+    "angular2-inline-template-style": "1.0.2",
     "angular2-template-loader": "0.6.2",
-    "awesome-typescript-loader": "3.0.4",
+    "awesome-typescript-loader": "3.1.0",
+    "codelyzer": "2.0.0",
     "commitizen": "2.9.6",
     "core-js": "2.4.1",
     "cz-conventional-changelog": "1.2.0",
+    "husky": "0.13.1",
     "raw-loader": "0.5.1",
-    "semantic-release": "^6.3.2",
-    "typescript": "2.1.6",
+    "rxjs": "5.2.0",
+    "semantic-release": "6.3.2",
+    "typescript": "2.2.1",
     "webpack": "2.2.1",
-    "webpack-dev-server": "2.3.0"
+    "webpack-dev-server": "2.4.1",
+    "zone.js": "0.7.7"
   },
   "config": {
     "commitizen": {

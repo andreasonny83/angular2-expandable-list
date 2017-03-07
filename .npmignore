@@ -1,14 +1,20 @@
-# common
-node_modules
-demo
-*.log
+# OS generated files
+Thumbs.db
 .DS_Store
-.tmp
 
-# Webpack
-webpack.config.js
-
-# source/config
-src
+# Node generated files
+node_modules
+*.log
 *.yml
+
+# Ignored files
+src
+config
+coverage
+demo
+.nyc_output
+.test
+.tmp
 .gitignore
+*.ts
+!*.d.ts

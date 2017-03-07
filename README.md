@@ -8,6 +8,8 @@
 
 angular2-expandable-list is an HTML `<angular2-expandable-list>` tag enhanced with styling and animation
 
+Plunker DEMO available [here](https://embed.plnkr.co/uAPJq0/)
+
 ![screenshot](http://i.imgur.com/Qa402ev.gif)
 
 ## Table of contents
@@ -43,13 +45,7 @@ If you are using System.js you may want to add this into `map` and `package` con
 ```json
 {
   "map": {
-      "angular2-expandable-list": "node_modules/angular2-expandable-list"
-  },
-  "packages": {
-      "angular2-expandable-list": {
-        "main": "index.js",
-        "defaultExtension": "js"
-      }
+    "angular2-expandable-list": "node_modules/angular2-expandable-list/bundles/angular2-expandable-list.umd.js"
   }
 }
 ```
@@ -208,23 +204,15 @@ your `<expandable-list>`.
 ## Demo App
 
 Have a look at the [demo](https://github.com/andreasonny83/angular2-expandable-list/tree/master/demo)
-available in this repository for a real Angular2 application using the `Angular2-expandable-list` library.
+available in this repository for a real Angular2 application using the Angular2-Cookie-Law library.
 
 From your terminal all the Node dependencies using npm:
-
-```bash
-$ npm install
-# Or Yarn
-$ yarn install
-```
-
-Then initialize the application with:
 
 ```bash
 $ npm run demo
 ```
 
-Open your browser to [http://localhost:8080/](http://localhost:8080/)
+Open your browser to [http://localhost:9007/](http://localhost:9007/)
 to see the application running.
 
 ## Contributing

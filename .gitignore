@@ -1,8 +1,25 @@
+# OS generated files
+Thumbs.db
 .DS_Store
 
-# npm and yarn
+# Node generated files
 node_modules
 *.log
 
-# build
+# Code coverage
+coverage
+
+# Ignored files
+bundles
 lib
+src/*.d.ts
+src/*.js
+index.d.ts
+index.js
+*.map
+
+# @angular/compiler-cli
+*.metadata.*
+*.ngsummary.*
+*.ngfactory.*
+*.ngstyle.*

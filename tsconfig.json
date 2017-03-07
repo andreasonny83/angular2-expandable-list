@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "module": "es2015",
     "moduleResolution": "node",
@@ -7,28 +8,43 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noLib": false,
-    "lib": ["es2015", "dom"],
+    "noUnusedLocals": true,
+    "lib": [
+      "es2015",
+      "dom"
+    ],
     "sourceMap": true,
-    "pretty": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "./lib",
     "typeRoots": [
       "node_modules/@types"
     ],
     "types": [
+      "jasmine",
+      "node",
+      "selenium-webdriver",
+      "source-map",
+      "uglify-js",
+      "webpack"
     ]
   },
   "files": [
-    "lib/expandable-list.module.ts"
+    "index.ts"
   ],
   "exclude": [
     "node_modules",
-    "demo"
-  ]
+    "demo",
+    "bundle"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": { "rewriteTsconfig": false }
 }

@@ -11,10 +11,8 @@ node_js:
 before_script:
   - npm prune
 
-script:
-  - npm run build_prod
-
 after_success:
+  - npm run build_prod
   - npm run semantic-release
 
 branches:

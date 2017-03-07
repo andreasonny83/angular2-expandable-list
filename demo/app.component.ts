@@ -61,7 +61,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   items: any;
 
-
   constructor() {
     this.items = [
       {
