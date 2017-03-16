@@ -5,8 +5,10 @@ import {
   HostBinding,
   Input,
   AfterViewInit,
+  OnChanges,
+  SimpleChanges,
   ElementRef,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 
 @Component({
@@ -44,9 +46,11 @@ export class ExpandableListDividerStyler { }
   templateUrl: './expandable-list-item.html',
   encapsulation: ViewEncapsulation.None
 })
-export class ExpandableListItemComponent implements AfterViewInit {
-  public isExpanded: boolean;
+export class ExpandableListItemComponent implements AfterViewInit, OnChanges {
   public marginTop: string;
+
+  @Input()
+  public isExpanded = false;
 
   @Input('disabled')
   get disabled() { return this.isDisabled; }
@@ -62,13 +66,14 @@ export class ExpandableListItemComponent implements AfterViewInit {
   @HostBinding('attr.disabled')
   private isDisabled: boolean;
 
-  constructor() {
-    this.isExpanded = false;
-  }
-
   public ngAfterViewInit() {
     this.elHeight = this.elementView.nativeElement.offsetHeight;
-    this.marginTop = `-${this.elHeight}px`;
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes.isExpanded) {
+      this._updateMarginTop();
+    }
   }
 
   public onClick() {
@@ -78,10 +83,14 @@ export class ExpandableListItemComponent implements AfterViewInit {
 
     this.isExpanded = !this.isExpanded;
 
+    this._updateMarginTop();
+  }
+
+  private _updateMarginTop() {
     if (!this.isExpanded) {
       this.marginTop = `-${this.elHeight}px`;
     } else {
       this.marginTop = '0';
-    }
+    }    
   }
 }

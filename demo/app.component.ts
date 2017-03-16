@@ -30,7 +30,7 @@ import { Component } from '@angular/core';
         <span secondary>disabled</span>
       </expandable-list-item>
 
-      <expandable-list-item>
+      <expandable-list-item [isExpanded]="isExpanded">
         <span title>Manual</span>
         <span secondary>first</span>
         <a href="http://www.goo.gl">Something else</a>
@@ -60,6 +60,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   items: any;
+  isExpanded = true;
 
   constructor() {
     this.items = [
@@ -98,5 +99,9 @@ export class AppComponent {
         ]
       },
     ];
+
+    setInterval(() => {
+      this.isExpanded = !this.isExpanded;
+    }, 5000);
   }
 }
