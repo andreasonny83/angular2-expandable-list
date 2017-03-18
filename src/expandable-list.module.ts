@@ -1,3 +1,11 @@
+/**
+ * angular2-expandable-list
+ *
+ * Copyright 2017, @andreasonny83, All rights reserved.
+ *
+ * @author: @andreasonny83 <andreasonny83@gmail.com>
+ */
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {

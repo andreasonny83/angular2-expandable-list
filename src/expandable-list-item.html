@@ -28,6 +28,6 @@
        [ngStyle]="{'margin-top': marginTop }"
        [attr.aria-hidden]="!isExpanded"
        #contentEl>
-    <ng-content select="[item]"></ng-content>
+    <ng-content select="[item], expandable-list-divider"></ng-content>
   </div>
 </div>

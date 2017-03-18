@@ -9,7 +9,13 @@
   background: #FFF;
 }
 
-.expandable-list [disabled].expandable-list-item {
+.expandable-list .expandable-list-item[disabled],
+.expandable-list .expandable-list-item[disabled] * {
+  pointer-events: none;
+  cursor: default;
+}
+
+.expandable-list .expandable-list-item[disabled].expandable-list-item {
   background: #eeeeee;
 }
 
@@ -26,10 +32,6 @@
   height: 52px;
   font-size: 16px;
   cursor: pointer;
-}
-
-.expandable-list [disabled].expandable-list-item .expandable-list-item-title {
-  cursor: default;
 }
 
 .expandable-list .expandable-list-item .expandable-list-item-title .expandable-list-item--title,
@@ -110,6 +112,7 @@
   font-size: 16px;
   opacity: 0;
   pointer-events: none;
+  will-change: margin-top, opacity;
   transition: opacity 0.15s ease-out,
               margin-top 0.3s ease-out;
 }

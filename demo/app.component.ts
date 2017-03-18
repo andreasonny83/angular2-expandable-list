@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
   `],
   template: `
     <expandable-list class="expandable-list">
-      <expandable-list-item *ngFor="let item of items">
+      <expandable-list-item *ngFor="let item of items" [isExpanded]="listAExpanded">
         <span title>{{ item.title }}</span>
         <a item *ngFor="let i of item.items"
            [href]="i.link">
@@ -30,20 +30,22 @@ import { Component } from '@angular/core';
         <span secondary>disabled</span>
       </expandable-list-item>
 
-      <expandable-list-item>
+      <expandable-list-item [isExpanded]="listCExpanded">
         <span title>Manual</span>
         <span secondary>first</span>
-        <a href="http://www.goo.gl">Something else</a>
+
+        <a href="http://www.goo.gl">THIS WON'T BE RENDERED!</a>
+
         <a item href="http://www.goo.gl">Google</a>
         <a item href="http://www.goo.gl">Google</a>
         <a item href="http://www.goo.gl">Google</a>
 
-        <expandable-list-divider item></expandable-list-divider>
+        <expandable-list-divider></expandable-list-divider>
 
-        <a item href="http://www.goo.gl">Google</a>
+        <a item href="http://www.goo.gl">Google after</a>
       </expandable-list-item>
 
-      <expandable-list-item>
+      <expandable-list-item [isExpanded]="listBExpanded" disabled>
         <span title>Manual</span>
         <span secondary>second</span>
         <a href="http://www.goo.gl">Something else</a>
@@ -51,7 +53,7 @@ import { Component } from '@angular/core';
         <a item href="http://www.goo.gl">Google</a>
         <a item href="http://www.goo.gl">Google</a>
 
-        <expandable-list-divider item></expandable-list-divider>
+        <expandable-list-divider></expandable-list-divider>
 
         <a item href="http://www.goo.gl">Google</a>
       </expandable-list-item>
@@ -60,6 +62,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   items: any;
+  listAExpanded = false;
+  listBExpanded = true;
+  listCExpanded = false;
 
   constructor() {
     this.items = [

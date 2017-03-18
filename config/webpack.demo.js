@@ -51,12 +51,29 @@ module.exports = {
       },
 
       {
-        test: /\.(css|html)?$/,
+        test: /\.css$/,
         use: [
           {
             loader: 'raw-loader'
           },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function() {
+                return [
+                  require('autoprefixer')({
+                    browsers: ['last 3 versions', '> 2%']
+                  })
+                ]
+              }
+            }
+          },
         ]
+      },
+
+      {
+        test: /\.html$/,
+        use: [ 'raw-loader' ]
       },
     ]
   },

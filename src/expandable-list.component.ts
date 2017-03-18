@@ -1,3 +1,11 @@
+/**
+ * angular2-expandable-list
+ *
+ * Copyright 2017, @andreasonny83, All rights reserved.
+ *
+ * @author: @andreasonny83 <andreasonny83@gmail.com>
+ */
+
 import {
   Component,
   Directive,
@@ -5,6 +13,8 @@ import {
   HostBinding,
   Input,
   AfterViewInit,
+  OnChanges,
+  SimpleChanges,
   ElementRef,
   ViewChild,
 } from '@angular/core';
@@ -42,11 +52,16 @@ export class ExpandableListDividerStyler { }
     '[class.expandable-list-item]': 'true',
   },
   templateUrl: './expandable-list-item.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-export class ExpandableListItemComponent implements AfterViewInit {
-  public isExpanded: boolean;
+export class ExpandableListItemComponent implements AfterViewInit, OnChanges {
   public marginTop: string;
+
+  @Input('isExpanded')
+  get isExpanded() { return this.expanded; }
+  set isExpanded(value: boolean) {
+    this.expanded = (value !== null && `${value}` !== 'false') ? true : false;
+  }
 
   @Input('disabled')
   get disabled() { return this.isDisabled; }
@@ -62,13 +77,17 @@ export class ExpandableListItemComponent implements AfterViewInit {
   @HostBinding('attr.disabled')
   private isDisabled: boolean;
 
-  constructor() {
-    this.isExpanded = false;
-  }
+  @HostBinding('attr.is-expanded')
+  private expanded: boolean = false;
 
   public ngAfterViewInit() {
     this.elHeight = this.elementView.nativeElement.offsetHeight;
-    this.marginTop = `-${this.elHeight}px`;
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if ('isExpanded' in changes) {
+      this.updateMarginTop();
+    }
   }
 
   public onClick() {
@@ -78,6 +97,10 @@ export class ExpandableListItemComponent implements AfterViewInit {
 
     this.isExpanded = !this.isExpanded;
 
+    this.updateMarginTop();
+  }
+
+  private updateMarginTop() {
     if (!this.isExpanded) {
       this.marginTop = `-${this.elHeight}px`;
     } else {

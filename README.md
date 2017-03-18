@@ -16,14 +16,17 @@ Plunker DEMO available [here](https://embed.plnkr.co/uAPJq0/)
 
 ## Table of contents
 
-*   [Installation](#installation)
-*   [Setup](#setup)
-*   [Usage](#usage)
-*   [Design your list](#design-your-list)
-*   [Demo App](#demo-app)
-*   [Contributing](#contributing)
-*   [Changelog](#changelog)
-*   [License](#license)
+* [Installation](#installation)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Design your list](#design-your-list)
+* [Demo App](#demo-app)
+* [Contributing](#contributing)
+* [Options](#options)
+  * [Properties](#properties)
+  * [Attributes](#attributes)
+* [Changelog](#changelog)
+* [License](#license)
 
 ## Installation
 
@@ -104,6 +107,7 @@ import { Component } from '@angular/core';
       <span title>My List</span>
       <a item href="http://www.goo.gl">Google</a>
       <a item href="http://www.goo.gl">Google</a>
+      <expandable-list-divider></expandable-list-divider>
       <a item href="http://www.goo.gl">Google</a>
     </expandable-list-item>
   </expandable-list>
@@ -158,7 +162,7 @@ Now you're ready to fill your list with some items.
 ```
 
 It is important to append the html attribute `item` to each of the item you want
-to render in the list and it's up to you which HTML tag to use. We've just filled
+to be rendered in the list and it's up to you which HTML tag to use. We've just filled
 our list with anchor link but feel free to use any other tag.
 
 ### Dividers
@@ -170,14 +174,11 @@ our list with anchor link but feel free to use any other tag.
     <span secondary>Secondary</span>
     <a item href="http://www.goo.gl">Google</a>
     <a item href="http://www.goo.gl">Google</a>
-    <expandable-list-divider item></expandable-list-divider>
+    <expandable-list-divider></expandable-list-divider>
     <a item href="http://www.goo.gl">Google</a>
   </expandable-list-item>
 </expandable-list>
 ```
-
-We still need to postfix the `expandable-list-divider` with the `item` attribute to
-see that divider rendered on the page.
 
 ### Create more
 
@@ -191,7 +192,7 @@ your `<expandable-list>`.
     <span secondary>Secondary</span>
     <a item href="http://www.goo.gl">Google</a>
     <a item href="http://www.goo.gl">Google</a>
-    <expandable-list-divider item></expandable-list-divider>
+    <expandable-list-divider></expandable-list-divider>
     <a item href="http://www.goo.gl">Google</a>
   </expandable-list-item>
 
@@ -216,6 +217,46 @@ $ npm run demo
 
 Open your browser to [http://localhost:9007/](http://localhost:9007/)
 to see the application running.
+
+## Options
+
+## Properties
+
+### isExpanded
+
+| Type | Default value |
+| --- | --- |
+| boolean | false |
+
+Used for interacting with the `expandable-list-item` element.
+
+Example:
+
+```ts
+@Component({
+  selector: 'app',
+  template: `
+    <expandable-list class="expandable-list">
+      <expandable-list-item [isExpanded]="listExpanded">
+        <span title>My list</span>
+        <a item href="http://www.goo.gl">Google</a>
+        <a item href="http://www.goo.gl">Google</a>
+        <a item href="http://www.goo.gl">Google</a>
+      </expandable-list-item>
+    </expandable-list>
+  `
+})
+export class AppComponent {
+  listExpanded = true;
+}
+```
+
+## Attributes
+
+| Name | Type | Description |
+| --- | --- | --- |
+| disabled | boolean | When applied to the `expandable-list-item`, disabled the
+| is-expanded | boolean | Reflect the expandable state of the item list element
 
 ## Contributing
 
