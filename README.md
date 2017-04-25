@@ -7,11 +7,14 @@
 
 # angular2-expandable-list
 
-> Expandable lists made easy for Angular2
+> Expandable lists made easy for Angular2+
 
-angular2-expandable-list is an HTML `<angular2-expandable-list>` tag enhanced with styling and animation
+Angular2 Expandable List is an HTML `<angular2-expandable-list>` tag enhanced with styling and animation.
+now compatible with Angular4 too.
 
-Plunker DEMO available [here](https://embed.plnkr.co/uAPJq0/)
+**Plunker DEMOs:**
+
+*   [Angular2 Expandable List with Angular2](https://embed.plnkr.co/uAPJq0/)
 
 ![screenshot](http://i.imgur.com/Qa402ev.gif)
 
@@ -26,6 +29,7 @@ Plunker DEMO available [here](https://embed.plnkr.co/uAPJq0/)
 * [Options](#options)
   * [Properties](#properties)
   * [Attributes](#attributes)
+* [Angular 4](#angular-4)
 * [Changelog](#changelog)
 * [License](#license)
 
@@ -258,6 +262,36 @@ export class AppComponent {
 | --- | --- | --- |
 | disabled | boolean | When applied to the `expandable-list-item`, disabled the
 | is-expanded | boolean | Reflect the expandable state of the item list element
+
+## Angular 4
+
+This module will work with Angular 4 projects but requires `@angular/animations`
+to be included in your project as the Angular animations are not part of the `@angular/core`
+library starting from the version >=4.
+
+Make sure to include the `BrowserAnimationsModule` in your App module like in the following example:
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  bootstrap: [ AppComponent ],
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule, // Angular 4 Only
+  ],
+})
+export class AppModule { }
+```
+
+Everything else will just work as before.
 
 ## Contributing
 
