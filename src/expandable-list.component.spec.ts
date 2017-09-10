@@ -59,7 +59,7 @@ describe('ExpandableListModule', () => {
     expect(itemContent).toBeTruthy();
   });
 
-  it('The title should contatin a label and a drop-down button', () => {
+  it('the title should contatin a label and a drop-down button', () => {
     fixture.detectChanges();
     let itemTitle = listItemDe.query(By.css('.expandable-list-item-title .expandable-list-item--title'));
     let titleLabel = itemTitle.query(By.css('span'));
@@ -101,7 +101,7 @@ describe('ExpandableListModule', () => {
   });
 
   it('user interaction', () => {
-    let testComponent = fixture.debugElement.componentInstance;
+    let testComponent: TestApp = fixture.debugElement.componentInstance;
 
     fixture.detectChanges();
     let itemTitle = listItemDe.query(By.css('.expandable-list-item-title'));
@@ -122,6 +122,20 @@ describe('ExpandableListModule', () => {
 
     expect(listItemDe.nativeElement.getAttribute('is-expanded'))
       .toBe('false', 'list item element collapsed');
+  });
+
+  it('should trigger an event when the status change', () => {
+    let testComponent: TestApp = fixture.debugElement.componentInstance;
+    let itemTitle = listItemDe.query(By.css('.expandable-list-item-title'));
+
+    fixture.detectChanges();
+
+    expect(testComponent.listExpanded).toBe(false);
+
+    itemTitle.nativeElement.click();
+    fixture.detectChanges();
+
+    expect(testComponent.listExpanded).toBe(true);
   });
 
   it('user interaction on a disabled list', () => {
@@ -148,7 +162,9 @@ describe('ExpandableListModule', () => {
   selector: 'test-app',
   template: `
   <expandable-list class="expandable-list">
-  <expandable-list-item [isExpanded]="listExpanded" [disabled]="listDisabled">
+  <expandable-list-item [isExpanded]="listExpanded"
+                        [disabled]="listDisabled"
+                        (onExpanded)="listExpanded = $event">
     <span title>Title</span>
     <span secondary>secondary</span>
     <a href="http://www.goo.gl">Something else</a>

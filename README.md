@@ -263,6 +263,32 @@ export class AppComponent {
 | disabled | boolean | When applied to the `expandable-list-item`, disabled the
 | is-expanded | boolean | Reflect the expandable state of the item list element
 
+## Events
+
+| Name | Type | Description |
+| --- | --- | --- |
+| onExpanded | boolean | Triggered when the list expansion status changes
+
+Example:
+
+```ts
+@Component({
+  selector: 'app',
+  template: `
+    <expandable-list class="expandable-list">
+      <expandable-list-item [isExpanded]="listExpanded"
+                            (onExpanded)="listExpanded = $event">
+        <span title>My list</span>
+        <a item href="http://www.goo.gl">Google</a>
+      </expandable-list-item>
+    </expandable-list>
+  `
+})
+export class AppComponent {
+  listExpanded = true;
+}
+```
+
 ## Angular 4
 
 This module will work with Angular 4 projects but requires `@angular/animations`

@@ -12,11 +12,13 @@ import {
   ViewEncapsulation,
   HostBinding,
   Input,
+  Output,
   AfterViewInit,
   OnChanges,
   SimpleChanges,
   ElementRef,
   ViewChild,
+  EventEmitter,
 } from '@angular/core';
 
 @Component({
@@ -69,6 +71,9 @@ export class ExpandableListItemComponent implements AfterViewInit, OnChanges {
     this.isDisabled = (value !== null && `${value}` !== 'false') ? true : null;
   }
 
+  @Output()
+  public onExpanded: EventEmitter<boolean>;
+
   private elHeight: number;
 
   @ViewChild('contentEl')
@@ -82,6 +87,10 @@ export class ExpandableListItemComponent implements AfterViewInit, OnChanges {
 
   public ngAfterViewInit() {
     this.elHeight = this.elementView.nativeElement.offsetHeight;
+  }
+
+  constructor() {
+    this.onExpanded = new EventEmitter<boolean>();
   }
 
   public ngOnChanges(changes: SimpleChanges) {
@@ -106,5 +115,7 @@ export class ExpandableListItemComponent implements AfterViewInit, OnChanges {
     } else {
       this.marginTop = '0';
     }
+
+    this.onExpanded.emit(this.isExpanded);
   }
 }

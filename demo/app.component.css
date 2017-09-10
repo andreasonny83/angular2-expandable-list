@@ -1,0 +1,22 @@
+:host {
+  background: rgb(184, 218, 215);
+  display: block;
+  height: 100%;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.button {
+  margin: 10px 0;
+  border: 1px solid #333;
+  background: #eee;
+  color: #000;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 5px 15px;
+}

@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+  <button class="button"
+          (click)="toggleMe()"> Toggle List</button>
+  <p>List status: {{ listAExpanded ? 'Expanded' : 'Collapsed' }}</p>
+
+  <expandable-list class="expandable-list">
+    <expandable-list-item *ngFor="let item of items"
+                          [isExpanded]="listAExpanded"
+                          (onExpanded)="updateStatus($event)">
+      <span title>{{ item.title }}</span>
+      <a item *ngFor="let i of item.items"
+        [href]="i.link">
+        {{ i.title }}
+      </a>
+    </expandable-list-item>
+
+    <expandable-list-item disabled>
+      <span title>Manual</span>
+      <span secondary>disabled</span>
+    </expandable-list-item>
+
+    <expandable-list-item [isExpanded]="listCExpanded">
+      <span title>Manual</span>
+      <span secondary>first</span>
+
+      <a href="http://www.goo.gl">THIS WON'T BE RENDERED!</a>
+
+      <a item href="http://www.goo.gl">Google</a>
+      <a item href="http://www.goo.gl">Google</a>
+      <a item href="http://www.goo.gl">Google</a>
+
+      <expandable-list-divider></expandable-list-divider>
+
+      <a item href="http://www.goo.gl">Google after</a>
+    </expandable-list-item>
+
+    <expandable-list-item [isExpanded]="listBExpanded" disabled>
+      <span title>Manual</span>
+      <span secondary>second</span>
+      <a href="http://www.goo.gl">Something else</a>
+      <a item href="http://www.goo.gl">Google</a>
+      <a item href="http://www.goo.gl">Google</a>
+      <a item href="http://www.goo.gl">Google</a>
+
+      <expandable-list-divider></expandable-list-divider>
+
+      <a item href="http://www.goo.gl">Google</a>
+    </expandable-list-item>
+  </expandable-list>
+</div>
