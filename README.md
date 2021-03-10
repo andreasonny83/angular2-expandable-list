@@ -12,6 +12,14 @@
 Angular2 Expandable List is an HTML `<angular2-expandable-list>` tag enhanced with styling and animation.
 now compatible with Angular4 too.
 
+## Maintainers Wanted
+
+This project was originally intended to be only consumed by my NG applications. 
+I'm now working full-time on React related project only and it's been a while since I did look into Angular related code.
+
+However, since there are now several people relying on this small and simple package, I'm looking for volunteers to actiely look after this project.
+If anyone is interested, please reply into [this ticket](https://github.com/andreasonny83/angular2-expandable-list/issues/20).
+
 **Plunker DEMOs:**
 
 *   [Angular2 Expandable List with Angular2](https://embed.plnkr.co/uAPJq0/)
